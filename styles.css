@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: cornflowerblue;
+}
+
+.heroSection {
+    display: grid;
+    grid-template-columns: repeat(3, 8rem);
+    grid-gap: 2rem;
+
+}
+
+.card {
+    position: relative;
+    background: coral;
+}
