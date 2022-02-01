@@ -26,15 +26,17 @@ const randomize = () => {
 }
 
 //hero html generator
-const heroGenerator = () => {
+const heroCardGenerator = () => {
     const heroData = randomize();
-    heroSection.innerHTML += `
-        <ul>
-            <li>${heroData[0].name}</li>
-            <li>${heroData[1].name}</li>
-            <li>${heroData[2].name}</li>
-        </ul>
-    `
+    heroData.forEach(hero => {
+        const card = document.createElement('div');
+        console.log(hero)
+        card.classList = 'card';
+
+        card.setAttribute('name', hero.name)
+        card.innerText = hero.name
+        heroSection.appendChild(card);
+    })
 }
 
-heroGenerator()
+heroCardGenerator()
