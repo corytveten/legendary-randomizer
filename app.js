@@ -1,4 +1,6 @@
+const content = document.getElementById("content")
 const heroSection = document.querySelector(".hero-section")
+const startButton = document.getElementById("start-button")
 
 const getHeroes = () => [
     { name: "Captain America", id: 1},
@@ -25,6 +27,16 @@ const randomize = () => {
     return heroData;
 }
 
+//card holder
+const cardHolderGenerator = () => {
+    console.log('cardholdergenerator')
+    content.innerHTML= 
+    `
+    <h3>Heroes:</h3>
+    <div class="hero-section"></div>
+    `
+    heroCardGenerator()
+}
 //hero html generator
 const heroCardGenerator = () => {
     const heroData = randomize();
@@ -39,8 +51,9 @@ const heroCardGenerator = () => {
     })
 }
 
-document.addEventListener('click', (e) => {
+startButton.addEventListener('click', (e) => {
     console.log('click')
-    heroCardGenerator()
+    cardHolderGenerator()
+    // heroCardGenerator()
 })
 
