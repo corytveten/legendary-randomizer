@@ -1,4 +1,4 @@
-const heroSection = document.querySelector(".heroSection")
+const heroSection = document.querySelector(".hero-section")
 
 const getHeroes = () => [
     { name: "Captain America", id: 1},
@@ -39,4 +39,8 @@ const heroCardGenerator = () => {
     })
 }
 
-heroCardGenerator()
+document.addEventListener('click', (e) => {
+    console.log('click')
+    heroCardGenerator()
+})
+
