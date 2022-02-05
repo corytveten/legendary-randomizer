@@ -29,26 +29,32 @@ const randomize = () => {
 }
 
 //card holder
-const cardHolderGenerator = () => {
+const cardHolderGenerator = (playerCount) => {
     console.log('cardholdergenerator')
     content.innerHTML= 
     `
     <h3>Heroes:</h3>
     <div class="hero-section"></div>
     `
-    heroCardGenerator()
+    heroCardGenerator(playerCount)
 }
 //hero html generator
 //pass in player amount
-const heroCardGenerator = (i) => {
+const heroCardGenerator = (playerCount) => {
     const heroData = randomize();
+    let count = parseInt(playerCount)
     //parsing through each hero object
-    heroData.forEach(hero => {
+    let counter = 0;
+    for (let i = 0; i < (count + 2); i++) {
         //grab new element
+        counter++
+        console.log(counter)
+        const hero = heroData[i]
+        console.log(hero)
         const heroSection = document.querySelector(".hero-section")
         //create card element to append
         const card = document.createElement('div');
-        console.log(hero)
+        //console.log(hero)
         //add card class to each card
         card.classList = 'card';
         //add name attribute, assign name from hero object
@@ -56,7 +62,7 @@ const heroCardGenerator = (i) => {
         card.innerText = hero.name
         //append card
         heroSection.appendChild(card);
-    })
+    }
 }
 
 startButton.addEventListener('click', (e) => {
@@ -64,7 +70,7 @@ startButton.addEventListener('click', (e) => {
     let value = playerAmt.options[playerAmt.selectedIndex].text;
     console.log(value)
     console.log(e.currentTarget.parentElement)
-    cardHolderGenerator()
+    cardHolderGenerator(value)
     // heroCardGenerator()
 })
 
