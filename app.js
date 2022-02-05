@@ -30,25 +30,23 @@ const randomize = () => {
 
 //card holder
 const cardHolderGenerator = (playerCount) => {
-    console.log('cardholdergenerator')
     content.innerHTML= 
     `
     <h3>Heroes:</h3>
     <div class="hero-section"></div>
     `
     heroCardGenerator(playerCount)
+    resetPage()
 }
 //hero html generator
 //pass in player amount
 const heroCardGenerator = (playerCount) => {
     const heroData = randomize();
-    let count = parseInt(playerCount)
+    
+    let count = playerToNumber(playerCount)
     //parsing through each hero object
-    let counter = 0;
-    for (let i = 0; i < (count + 2); i++) {
+    for (let i = 0; i < (count); i++) {
         //grab new element
-        counter++
-        console.log(counter)
         const hero = heroData[i]
         console.log(hero)
         const heroSection = document.querySelector(".hero-section")
@@ -63,6 +61,24 @@ const heroCardGenerator = (playerCount) => {
         //append card
         heroSection.appendChild(card);
     }
+}
+
+//translate player count to card number
+const playerToNumber = (playerCount) => {
+    if (playerCount === '1') {
+        return 3
+    } else {
+        return 5
+    }
+}
+
+const resetPage = () => {
+    const reset = document.createElement('div')
+    reset.classList = 'reset'
+    reset.innerHTML = `
+        <button id='reset-button'>Reset</button>
+    `
+    content.appendChild(reset)
 }
 
 startButton.addEventListener('click', (e) => {
