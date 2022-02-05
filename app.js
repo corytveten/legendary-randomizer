@@ -39,10 +39,9 @@ const cardHolderGenerator = () => {
     heroCardGenerator()
 }
 //hero html generator
-const heroCardGenerator = () => {
+//pass in player amount
+const heroCardGenerator = (i) => {
     const heroData = randomize();
-    //grab number selected
-    console.log(playerAmt)
     //parsing through each hero object
     heroData.forEach(hero => {
         //grab new element
@@ -62,6 +61,9 @@ const heroCardGenerator = () => {
 
 startButton.addEventListener('click', (e) => {
     console.log('click')
+    let value = playerAmt.options[playerAmt.selectedIndex].text;
+    console.log(value)
+    console.log(e.currentTarget.parentElement)
     cardHolderGenerator()
     // heroCardGenerator()
 })
