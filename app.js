@@ -1,7 +1,8 @@
 const content = document.getElementById("content")
 const heroSection = document.querySelector(".hero-section")
 const startButton = document.getElementById("start-button")
-const playerAmt = document.getElementById("player-amt")
+const playerAmt = document.getElementById("player-amt");
+let clickCounter = 0
 
 const getHeroes = () => [
     { name: "Captain America", id: 1},
@@ -30,14 +31,22 @@ const randomize = () => {
 
 //card holder
 const cardHolderGenerator = (playerCount) => {
-    content.innerHTML= 
-    `
-    <h3>Heroes:</h3>
-    <div class="hero-section"></div>
-    `
-    heroCardGenerator(playerCount)
-    resetPage()
+
+        
+        const heroCardsContainer = document.createElement('div')
+        heroCardsContainer.classList = "hero-card-container"
+        heroCardsContainer.innerHTML = 
+            `
+            <h3>Heroes:</h3>
+            <div class="hero-section"></div>
+            `
+        content.append(heroCardsContainer)
+
+        heroCardGenerator(playerCount)
+        resetPage()
+
 }
+
 //hero html generator
 //pass in player amount
 const heroCardGenerator = (playerCount) => {
@@ -79,12 +88,17 @@ const resetPage = () => {
         <button id='reset-button'>Reset</button>
     `
     content.appendChild(reset)
+    const resetButton = document.getElementById('reset-button')
+    resetButton.addEventListener('click', (e) => {
+        console.log(e.target.parentElement.parentElement)
+        // document.removeChild(e.target.parentElement.parentElement)
+    })
 }
 
+
 startButton.addEventListener('click', (e) => {
-    console.log('click')
+    clickCounter++;
     let value = playerAmt.options[playerAmt.selectedIndex].text;
-    console.log(value)
     console.log(e.currentTarget.parentElement)
     cardHolderGenerator(value)
     // heroCardGenerator()
