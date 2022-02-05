@@ -9,8 +9,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(15,110,138,1) 35%, rgba(0,212,255,1) 100%);
+    background: rgb(79,75,143);
+    background: linear-gradient(90deg, rgba(79,75,143,1) 0%, rgba(43,189,172,1) 31%, rgba(0,212,255,1) 100%);
 }
 
 .hero-section {

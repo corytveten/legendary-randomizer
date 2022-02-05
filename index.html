@@ -10,8 +10,14 @@
 <body>
     <h2>Legendary Card Randomizer</h2>
     <div id='content'>
-        <label for="hero-amt">How Many Heroes?</label>
-        <input id='hero-amt' type="text">
+        <label for="player-amt">How Many Players?</label>
+        <select name="player-amt" id='player-amt'>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
         <button id='start-button'>Assemble!</button>
     </div>
     <script src="./app.js"></script>

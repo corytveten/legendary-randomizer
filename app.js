@@ -1,6 +1,7 @@
 const content = document.getElementById("content")
 const heroSection = document.querySelector(".hero-section")
 const startButton = document.getElementById("start-button")
+const playerAmt = document.getElementById("player-amt")
 
 const getHeroes = () => [
     { name: "Captain America", id: 1},
@@ -40,13 +41,21 @@ const cardHolderGenerator = () => {
 //hero html generator
 const heroCardGenerator = () => {
     const heroData = randomize();
+    //grab number selected
+    console.log(playerAmt)
+    //parsing through each hero object
     heroData.forEach(hero => {
+        //grab new element
+        const heroSection = document.querySelector(".hero-section")
+        //create card element to append
         const card = document.createElement('div');
         console.log(hero)
+        //add card class to each card
         card.classList = 'card';
-
+        //add name attribute, assign name from hero object
         card.setAttribute('name', hero.name)
         card.innerText = hero.name
+        //append card
         heroSection.appendChild(card);
     })
 }
