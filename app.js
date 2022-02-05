@@ -33,14 +33,14 @@ const randomize = () => {
 const cardHolderGenerator = (playerCount) => {
 
         
-        const heroCardsContainer = document.createElement('div')
-        heroCardsContainer.classList = "hero-card-container"
-        heroCardsContainer.innerHTML = 
+        const heroCardContainer = document.createElement('div')
+        heroCardContainer.classList = "hero-card-container"
+        heroCardContainer.innerHTML = 
             `
             <h3>Heroes:</h3>
             <div class="hero-section"></div>
             `
-        content.append(heroCardsContainer)
+        content.append(heroCardContainer)
 
         heroCardGenerator(playerCount)
         resetPage()
@@ -91,6 +91,9 @@ const resetPage = () => {
     const resetButton = document.getElementById('reset-button')
     resetButton.addEventListener('click', (e) => {
         console.log(e.target.parentElement.parentElement)
+        const heroCardContainer = document.querySelector(".hero-card-container")
+        heroCardContainer.remove()
+        reset.remove()
         // document.removeChild(e.target.parentElement.parentElement)
     })
 }
