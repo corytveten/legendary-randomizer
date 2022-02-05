@@ -23,16 +23,29 @@ const getHeroes = () => [
 
 ]
 
-const randomize = () => {
+const getMasterminds = () => [
+    { name: "Magneto", id: 1},
+    { name: "Dr. Doom", id: 2},
+    { name: "Red Skull", id: 3},
+    { name: "Loki", id: 4},
+
+]
+
+const randomizeHeroes = () => {
     const heroData = getHeroes()
     heroData.sort(() => Math.random() - 0.5);
     return heroData;
 }
 
+const randomizeMasterminds = () => {
+    const mastermindData = getMasterminds()
+    mastermindData.sort(() => Math.random() - 0.5);
+    return mastermindData[0];
+}
+
 //card holder
 const cardHolderGenerator = (playerCount) => {
 
-        
         const heroCardContainer = document.createElement('div')
         heroCardContainer.classList = "hero-card-container"
         heroCardContainer.innerHTML = 
@@ -50,7 +63,7 @@ const cardHolderGenerator = (playerCount) => {
 //hero html generator
 //pass in player amount
 const heroCardGenerator = (playerCount) => {
-    const heroData = randomize();
+    const heroData = randomizeHeroes();
     
     let count = playerToNumber(playerCount)
     //parsing through each hero object
@@ -70,6 +83,23 @@ const heroCardGenerator = (playerCount) => {
         //append card
         heroSection.appendChild(card);
     }
+    const heroSection = document.querySelector(".hero-section")
+    const masterMind = createMastermindSection()
+    heroSection.append(masterMind)
+}
+
+const createMastermindSection = () => {
+    const mastermindData = randomizeMasterminds();
+    // console.log(mastermindData)
+    const mastermindSection = document.createElement('div');
+    // mastermindSection.classList = 'card';
+    // mastermindSection.setAttribute('name', mastermindData.name)
+    // mastermindSection.innerText = mastermindData.name;
+    mastermindSection.innerHTML = `
+        <h3>Mastermind:</h3>
+        <div class='card' name='${mastermindData.name}'>${mastermindData.name}</div>
+    `
+    return mastermindSection
 }
 
 //translate player count to card number
