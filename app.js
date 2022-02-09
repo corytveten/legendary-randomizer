@@ -5,42 +5,65 @@ const playerAmt = document.getElementById("player-amt");
 let clickCounter = 0
 
 const getHeroes = () => [
-    { name: "Captain America", id: 1},
-    { name: "Black Widow", id: 2},
-    { name: "Hulk", id: 3},
-    { name: "Spider-Man", id: 4},
-    { name: "Wolverine", id: 5},
-    { name: "Cyclops", id: 6},
-    { name: "Nick Fury", id: 7},
-    { name: "Deadpool", id: 8},
-    { name: "Emma Frost", id: 9},
-    { name: "Gambit", id: 10},
-    { name: "Hawkeye", id: 11},
-    { name: "Rogue", id: 12},
-    { name: "Storm", id: 13},
-    { name: "Thor", id: 14},
-    { name: "Iron Man", id: 15},
+    { name: "Captain America", id: 1, set: "core"},
+    { name: "Black Widow", id: 2, set: "core"},
+    { name: "Hulk", id: 3, set: "core"},
+    { name: "Spider-Man", id: 4, set: "core"},
+    { name: "Wolverine", id: 5, set: "core"},
+    { name: "Cyclops", id: 6, set: "core"},
+    { name: "Nick Fury", id: 7, set: "core"},
+    { name: "Deadpool", id: 8, set: "core"},
+    { name: "Emma Frost", id: 9, set: "core"},
+    { name: "Gambit", id: 10, set: "core"},
+    { name: "Hawkeye", id: 11, set: "core"},
+    { name: "Rogue", id: 12, set: "core"},
+    { name: "Storm", id: 13, set: "core"},
+    { name: "Thor", id: 14, set: "core"},
+    { name: "Iron Man", id: 15, set: "core"},
 
 ]
 
 const getMasterminds = () => [
-    { name: "Magneto", id: 1},
-    { name: "Dr. Doom", id: 2},
-    { name: "Red Skull", id: 3},
-    { name: "Loki", id: 4},
-
+    { name: "Magneto", id: 1, set: "core"},
+    { name: "Dr. Doom", id: 2, set: "core"},
+    { name: "Red Skull", id: 3, set: "core"},
+    { name: "Loki", id: 4, set: "core"},
 ]
 
-const randomizeHeroes = () => {
-    const heroData = getHeroes()
-    heroData.sort(() => Math.random() - 0.5);
-    return heroData;
-}
+const getVillains = () => [
+    { name: "Spider-foes", id: 1, set: "core" },
+    { name: "Brotherhood", id: 2, set: "core" },
+    { name: "Enemies of Asgard", id: 3, set: "core" },
+    { name: "HYDRA", id: 4, set: "core" },
+    { name: "Masters of Evil", id: 5, set: "core" },
+    { name: "Radiation", id: 6, set: "core" },
+    { name: "Skrulls", id: 7, set: "core" },
+]
+
+const getHenchmen = () => [
+    { name: "Doombot Legion", id: 1, set: "core"},
+    { name: "Hand Ninjas", id: 2, set: "core"},
+    { name: "Savage Land Mutates", id: 3, set: "core"},
+    { name: "Sentinel", id: 4, set: "core"},
+]
+
+// const randomizeHeroes = () => {
+//     const heroData = getHeroes()
+//     heroData.sort(() => Math.random() - 0.5);
+//     return heroData;
+// }
 
 const randomizeMasterminds = () => {
     const mastermindData = getMasterminds()
     mastermindData.sort(() => Math.random() - 0.5);
     return mastermindData[0];
+}
+
+const randomize = (cardTypeFunc) => {
+    const randomizedData = cardTypeFunc 
+    console.log(randomizedData)
+    randomizedData.sort(() => Math.random() - 0.5);
+    return randomizedData;
 }
 
 //card holder
@@ -63,7 +86,8 @@ const cardHolderGenerator = (playerCount) => {
 //hero html generator
 //pass in player amount
 const heroCardGenerator = (playerCount) => {
-    const heroData = randomizeHeroes();
+    // const heroData = randomizeHeroes();
+    const heroData = randomize(getHeroes())
     
     let count = playerToNumber(playerCount)
     //parsing through each hero object
