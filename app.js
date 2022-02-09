@@ -107,9 +107,11 @@ const heroCardGenerator = (playerCount) => {
         //append card
         heroSection.appendChild(card);
     }
-    const heroSection = document.querySelector(".hero-section")
+    // const heroSection = document.querySelector(".hero-section")
+    const heroCardContainer = document.querySelector(".hero-card-container")
     const masterMind = createMastermindSection()
-    heroSection.append(masterMind)
+    // heroSection.append(masterMind)
+    heroCardContainer.append(masterMind)
 }
 
 const createMastermindSection = () => {
@@ -121,7 +123,9 @@ const createMastermindSection = () => {
     // mastermindSection.innerText = mastermindData.name;
     mastermindSection.innerHTML = `
         <h3>Mastermind:</h3>
+        <div class='mastermind-section'>
         <div class='card' name='${mastermindData.name}'>${mastermindData.name}</div>
+        </div>
     `
     return mastermindSection
 }

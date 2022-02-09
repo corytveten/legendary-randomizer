@@ -11,16 +11,30 @@ body {
     flex-direction: column;
     background: rgb(79,75,143);
     background: linear-gradient(90deg, rgba(79,75,143,1) 0%, rgba(43,189,172,1) 31%, rgba(0,212,255,1) 100%);
+    font-family: 'Bangers', cursive;
 }
 
 .hero-section {
     display: grid;
     grid-template-columns: repeat(3, 8rem);
     grid-gap: 2rem;
+}
 
+.mastermind-section {
+    display: grid;
+    grid-template-columns: repeat(3, 8rem);
+    grid-gap: 2rem;
 }
 
 .card {
     position: relative;
     background: coral;
+}
+
+#start-button {
+    font-family: 'Bangers', cursive;
+}
+
+#player-amt {
+    font-family: 'Bangers', cursive;
 }
