@@ -2,7 +2,7 @@ const content = document.getElementById("content")
 const heroSection = document.querySelector(".hero-section")
 const startButton = document.getElementById("start-button")
 const playerAmt = document.getElementById("player-amt");
-let clickCounter = 0
+// let clickCounter = 0
 
 const getHeroes = () => [
     { name: "Captain America", id: 1, set: "core"},
@@ -78,7 +78,7 @@ const cardHolderGenerator = (playerCount) => {
         content.append(heroCardContainer)
 
         heroCardGenerator(playerCount)
-        resetPage()
+        // resetPage()
 
 }
 
@@ -134,7 +134,6 @@ const createMastermindSection = () => {
 const createVillainSection = () => {
 
     const villainSection = document.createElement('div');
-    
 
     villainSection.innerHTML = `
         <h3>Villains:</h3>
@@ -183,28 +182,32 @@ const playerCountToVillain = (playerCount) => {
     }
 }
 
-const resetPage = () => {
-    const reset = document.createElement('div')
-    reset.classList = 'reset'
-    reset.innerHTML = `
-        <button id='reset-button'>Reset</button>
-    `
-    content.appendChild(reset)
-    const resetButton = document.getElementById('reset-button')
-    resetButton.addEventListener('click', (e) => {
-        console.log(e.target.parentElement.parentElement)
-        const heroCardContainer = document.querySelector(".hero-card-container")
-        heroCardContainer.remove()
-        reset.remove()
-        // document.removeChild(e.target.parentElement.parentElement)
-    })
-}
+// const resetPage = () => {
+//     const reset = document.createElement('div')
+//     reset.classList = 'reset'
+//     reset.innerHTML = `
+//         <button id='reset-button'>Reset</button>
+//     `
+//     content.appendChild(reset)
+//     const resetButton = document.getElementById('reset-button')
+//     resetButton.addEventListener('click', (e) => {
+//         console.log(e.target.parentElement.parentElement)
+//         const heroCardContainer = document.querySelector(".hero-card-container")
+//         heroCardContainer.remove()
+//         reset.remove()
+//         // document.removeChild(e.target.parentElement.parentElement)
+//     })
+// }
 
 
 startButton.addEventListener('click', (e) => {
-    clickCounter++;
+    // clickCounter++;
     let value = playerAmt.options[playerAmt.selectedIndex].text;
-    console.log(e.currentTarget.parentElement)
+    const heroCardContainer = document.querySelector(".hero-card-container")
+    if (heroCardContainer) {
+        heroCardContainer.remove();
+
+    }
     cardHolderGenerator(value)
     // heroCardGenerator()
 })
