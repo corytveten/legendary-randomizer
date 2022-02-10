@@ -20,7 +20,6 @@ const getHeroes = () => [
     { name: "Storm", id: 13, set: "core"},
     { name: "Thor", id: 14, set: "core"},
     { name: "Iron Man", id: 15, set: "core"},
-
 ]
 
 const getMasterminds = () => [
@@ -98,7 +97,6 @@ const heroCardGenerator = (playerCount) => {
         const heroSection = document.querySelector(".hero-section")
         //create card element to append
         const card = document.createElement('div');
-        //console.log(hero)
         //add card class to each card
         card.classList = 'card';
         //add name attribute, assign name from hero object
@@ -110,8 +108,10 @@ const heroCardGenerator = (playerCount) => {
     // const heroSection = document.querySelector(".hero-section")
     const heroCardContainer = document.querySelector(".hero-card-container")
     const masterMind = createMastermindSection()
+    const villains = createVillainSection(playerCount)
     // heroSection.append(masterMind)
     heroCardContainer.append(masterMind)
+    heroCardContainer.append(villains)
 }
 
 const createMastermindSection = () => {
@@ -130,12 +130,57 @@ const createMastermindSection = () => {
     return mastermindSection
 }
 
+const createVillainSection = (playerCount) => {
+
+    const villainSection = document.createElement('div');
+    
+
+    villainSection.innerHTML = `
+        <h3>Villains:</h3>
+        <div class='villain-section'></div>
+    `
+    villainCardGenerator(playerCount)
+    return villainSection
+}
+
+const villainCardGenerator = (playerCount) => {
+    const villainData = randomize(getVillains());
+    let count = playerCountToVillain(playerCount);
+
+    for (let i=0; i < count; i++) {
+        const villain = villainData[i];
+        console.log(villain)
+
+        const villainSection = document.querySelector('.villain-section')
+
+        const card = document.createElement('div')
+
+        card.classList = 'card'
+        card.setAttribute('name', villain.name)
+        card.innerText = villain.name
+
+        villainSection.appendChild(card)
+    }
+}
+
 //translate player count to card number
 const playerToNumber = (playerCount) => {
     if (playerCount === '1') {
         return 3
     } else {
         return 5
+    }
+}
+
+const playerCountToVillain = (playerCount) => {
+    if (playerCount === '1') {
+        return 1
+    } else if (playerCount === '2') {
+        return 2
+    } else if (playerCount === '5') {
+        return 4
+    } else {
+        return 3
     }
 }
 
