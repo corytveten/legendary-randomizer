@@ -30,6 +30,12 @@ button {
     grid-gap: 2rem;
 }
 
+.villain-section {
+    display: grid;
+    grid-template-columns: repeat(3, 8rem);
+    grid-gap: 2rem;
+}
+
 .card {
     position: relative;
     background: coral;

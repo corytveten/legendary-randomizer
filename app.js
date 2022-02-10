@@ -112,6 +112,7 @@ const heroCardGenerator = (playerCount) => {
     // heroSection.append(masterMind)
     heroCardContainer.append(masterMind)
     heroCardContainer.append(villains)
+    villainCardGenerator(playerCount)
 }
 
 const createMastermindSection = () => {
@@ -130,7 +131,7 @@ const createMastermindSection = () => {
     return mastermindSection
 }
 
-const createVillainSection = (playerCount) => {
+const createVillainSection = () => {
 
     const villainSection = document.createElement('div');
     
@@ -139,7 +140,6 @@ const createVillainSection = (playerCount) => {
         <h3>Villains:</h3>
         <div class='villain-section'></div>
     `
-    villainCardGenerator(playerCount)
     return villainSection
 }
 
@@ -152,7 +152,6 @@ const villainCardGenerator = (playerCount) => {
         console.log(villain)
 
         const villainSection = document.querySelector('.villain-section')
-
         const card = document.createElement('div')
 
         card.classList = 'card'
