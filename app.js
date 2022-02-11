@@ -177,14 +177,21 @@ const villainCardGenerator = (playerCount) => {
     }
 }
 
-const createHenchmenSection = () => {
+const createHenchmenSection = (playerCount) => {
 
     const henchmenSection = document.createElement('div');
 
-    henchmenSection.innerHTML = `
-        <h3>Henchmen:</h3>
+    if (playerCount == 1) {
+        henchmenSection.innerHTML = `
+        <h3>Three Henchmen Cards:</h3>
         <div class='henchmen-section'></div>
     `
+    } else {
+        henchmenSection.innerHTML = `
+            <h3>Henchmen:</h3>
+            <div class='henchmen-section'></div>
+        `
+    }
     return henchmenSection
 }
 
