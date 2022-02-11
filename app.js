@@ -109,13 +109,13 @@ const heroCardGenerator = (playerCount) => {
     const heroCardContainer = document.querySelector(".hero-card-container")
     const masterMind = createMastermindSection()
     const villains = createVillainSection(playerCount)
-
+    const henchmen = createHenchmenSection(playerCount);
     const bystanders = createBystandersSection(playerCount)
     // heroSection.append(masterMind)
     heroCardContainer.append(masterMind);
     heroCardContainer.append(villains);
     villainCardGenerator(playerCount);
-
+    heroCardContainer.append(henchmen)
     heroCardContainer.append(bystanders)
 
 }
@@ -166,6 +166,36 @@ const villainCardGenerator = (playerCount) => {
     }
 }
 
+const createHenchmenSection = () => {
+
+    const henchmenSection = document.createElement('div');
+
+    henchmenSection.innerHTML = `
+        <h3>Henchmen:</h3>
+        <div class='henchmen-section'></div>
+    `
+    return henchmenSection
+}
+
+const henchmenCardGenerator = (playerCount) => {
+    const henchmenData = randomize(getHenchmen());
+    let count = playerCountToHenchmen(playerCount);
+
+    for (let i=0; i < count; i++) {
+        const henchmen = henchmenData[i];
+        console.log(henchmen)
+
+        const henchmenSection = document.querySelector('.henchmen-section')
+        const card = document.createElement('div')
+
+        card.classList = 'card'
+        card.setAttribute('name', henchmen.name)
+        card.innerText = henchmen.name
+
+        henchmenSection.appendChild(card)
+    }
+}
+
 const createBystandersSection = (playerCount) => {
     const bystandersSection = document.createElement('div')
     let count = playerCountToBystanders(playerCount)
@@ -194,6 +224,14 @@ const playerCountToVillain = (playerCount) => {
         return 4
     } else {
         return 3
+    }
+}
+
+const playerCountToHenchmen = (playerCount) => {
+    if (playerCount < 4) {
+        return 1
+    } else {
+        return 2
     }
 }
 
