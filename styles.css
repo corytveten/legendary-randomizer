@@ -21,19 +21,22 @@ button {
 .hero-section {
     display: grid;
     grid-template-columns: repeat(3, 8rem);
-    grid-gap: 2rem;
+    grid-gap: 1rem;
+    padding-bottom: 1rem;
 }
 
 .mastermind-section {
     display: grid;
     grid-template-columns: repeat(3, 8rem);
-    grid-gap: 2rem;
+    grid-gap: 1rem;
+    padding-bottom: 1rem;
 }
 
 .villain-section {
     display: grid;
     grid-template-columns: repeat(3, 8rem);
-    grid-gap: 2rem;
+    grid-gap: 1rem;
+    padding-bottom: 1rem;
 }
 
 .card {
