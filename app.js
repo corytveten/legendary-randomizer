@@ -46,16 +46,25 @@ const getHenchmen = () => [
     { name: "Sentinel", id: 4, set: "core"},
 ]
 
-// const randomizeHeroes = () => {
-//     const heroData = getHeroes()
-//     heroData.sort(() => Math.random() - 0.5);
-//     return heroData;
-// }
+const getScheme = () => [
+    { name: "Super Hero Civil War", id: 1, set: "core"},
+    { name: "Secret Invasion of the Skrull Shapeshifters", id: 2, set: "core"},
+    { name: "Replace Earth's Leaders with Killbots", id: 3, set: "core"},
+    { name: "The Legacy Virus", id: 4, set: "core"},
+    { name: "Midtown Bank Robbery", id: 5, set: "core"},
+    { name: "Unleash the Power of the Cosmic Cube", id: 6, set: "core"}
+]
 
 const randomizeMasterminds = () => {
     const mastermindData = getMasterminds()
     mastermindData.sort(() => Math.random() - 0.5);
     return mastermindData[0];
+}
+
+const randomizeScheme = () => {
+    const schemeData = getScheme();
+    schemeData.sort(() => Math.random() - 0.5)
+    return schemeData[0];
 }
 
 const randomize = (cardTypeFunc) => {
@@ -111,14 +120,15 @@ const heroCardGenerator = (playerCount) => {
     const villains = createVillainSection(playerCount)
     const henchmen = createHenchmenSection(playerCount);
     const bystanders = createBystandersSection(playerCount)
+    const scheme = createSchemeSection()
     // heroSection.append(masterMind)
     heroCardContainer.append(masterMind);
     heroCardContainer.append(villains);
     villainCardGenerator(playerCount);
     heroCardContainer.append(henchmen)
     henchmenCardGenerator(playerCount);
-    heroCardContainer.append(bystanders)
-
+    heroCardContainer.append(scheme);
+    heroCardContainer.append(bystanders);
 }
 
 const createMastermindSection = () => {
@@ -195,6 +205,19 @@ const henchmenCardGenerator = (playerCount) => {
 
         henchmenSection.appendChild(card)
     }
+}
+
+const createSchemeSection = () => {
+    const schemeData = randomizeScheme();
+    const schemeSection = document.createElement('div');
+
+    schemeSection.innerHTML = `
+        <h3>Scheme:</h3>
+        <div class='scheme-section'>
+        <div class='card' name='${schemeData.name}'>${schemeData.name}</div>
+        </div>
+    `
+    return schemeSection
 }
 
 const createBystandersSection = (playerCount) => {
