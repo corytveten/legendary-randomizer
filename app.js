@@ -116,6 +116,7 @@ const heroCardGenerator = (playerCount) => {
     heroCardContainer.append(villains);
     villainCardGenerator(playerCount);
     heroCardContainer.append(henchmen)
+    henchmenCardGenerator(playerCount);
     heroCardContainer.append(bystanders)
 
 }
