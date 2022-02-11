@@ -109,10 +109,15 @@ const heroCardGenerator = (playerCount) => {
     const heroCardContainer = document.querySelector(".hero-card-container")
     const masterMind = createMastermindSection()
     const villains = createVillainSection(playerCount)
+
+    const bystanders = createBystandersSection(playerCount)
     // heroSection.append(masterMind)
-    heroCardContainer.append(masterMind)
-    heroCardContainer.append(villains)
-    villainCardGenerator(playerCount)
+    heroCardContainer.append(masterMind);
+    heroCardContainer.append(villains);
+    villainCardGenerator(playerCount);
+
+    heroCardContainer.append(bystanders)
+
 }
 
 const createMastermindSection = () => {
@@ -161,6 +166,16 @@ const villainCardGenerator = (playerCount) => {
     }
 }
 
+const createBystandersSection = (playerCount) => {
+    const bystandersSection = document.createElement('div')
+    let count = playerCountToBystanders(playerCount)
+
+    bystandersSection.innerHTML = `
+        <h3>Bystanders: ${count}</h3>
+    `
+    return bystandersSection
+}
+
 //translate player count to card number
 const playerToNumber = (playerCount) => {
     if (playerCount === '1') {
@@ -180,6 +195,24 @@ const playerCountToVillain = (playerCount) => {
     } else {
         return 3
     }
+}
+
+const playerCountToBystanders = (playerCount) => {
+    let bystanderAmt;
+    switch(playerCount) {
+        case '1':
+            bystanderAmt = 1;
+            break;
+        case '2':
+            bystanderAmt = 2;
+            break;
+        case '5':
+            bystanderAmt = 12;
+            break;
+        default:
+            bystanderAmt = 8;
+    }
+    return bystanderAmt
 }
 
 // const resetPage = () => {
