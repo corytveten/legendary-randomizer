@@ -13,14 +13,24 @@
 <body>
     <h2>Legendary Card Randomizer</h2>
     <div id='content'>
-        <label for="player-amt">How Many Players?</label>
-        <select name="player-amt" id='player-amt'>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+        <div class="player-number">
+            <label for="player-amt">How Many Players?</label>
+            <select name="player-amt" id='player-amt'>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="collection">
+            <p>Which Collections?</p>
+            <input type="checkbox" id="core" name="core" value="core">
+            <label for="collection">Core Set</label>
+            <input type="checkbox" id="dark-city" name="dark-city" value="dark-city">
+            <label for="collection">Dark City</label>
+        </div>
+
         <button id="start-button">Assemble!</button>
     </div>
     <script src="./app.js"></script>
