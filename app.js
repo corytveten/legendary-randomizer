@@ -1,7 +1,8 @@
 const content = document.getElementById("content")
-const heroSection = document.querySelector(".hero-section")
-const startButton = document.getElementById("start-button")
+const heroSection = document.querySelector(".hero-section");
+const startButton = document.getElementById("start-button");
 const playerAmt = document.getElementById("player-amt");
+const collections = document.querySelector(".collections");
 // let clickCounter = 0
 
 const getHeroes = () => [
@@ -291,6 +292,24 @@ const playerCountToBystanders = (playerCount) => {
     return bystanderAmt
 }
 
+
+startButton.addEventListener('click', (e) => {
+    // clickCounter++;
+    let value = playerAmt.options[playerAmt.selectedIndex].text;
+    let collectionChoices = document.querySelectorAll('input[name="collection"]:checked');
+    console.log(collectionChoices)
+    const heroCardContainer = document.querySelector(".hero-card-container")
+    if (heroCardContainer) {
+        heroCardContainer.remove();
+
+    }
+    cardHolderGenerator(value)
+    // heroCardGenerator()
+})
+
+
+
+
 // const resetPage = () => {
 //     const reset = document.createElement('div')
 //     reset.classList = 'reset'
@@ -307,17 +326,3 @@ const playerCountToBystanders = (playerCount) => {
 //         // document.removeChild(e.target.parentElement.parentElement)
 //     })
 // }
-
-
-startButton.addEventListener('click', (e) => {
-    // clickCounter++;
-    let value = playerAmt.options[playerAmt.selectedIndex].text;
-    const heroCardContainer = document.querySelector(".hero-card-container")
-    if (heroCardContainer) {
-        heroCardContainer.remove();
-
-    }
-    cardHolderGenerator(value)
-    // heroCardGenerator()
-})
-
