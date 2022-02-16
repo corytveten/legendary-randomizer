@@ -22,6 +22,13 @@ const getHeroes = () => [
     { name: "Iron Man", id: 15, set: "core"},
 ]
 
+const getDarkCityHeroes = () => [
+    { name: "Angel", id: 1, set: "dark city"},
+    { name: "Bishop", id: 2, set: "dark city"},
+    { name: "Blade", id: 1, set: "dark city"},
+
+]
+
 const getMasterminds = () => [
     { name: "Magneto", id: 1, set: "core"},
     { name: "Dr. Doom", id: 2, set: "core"},
