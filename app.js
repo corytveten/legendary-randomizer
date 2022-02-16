@@ -82,9 +82,9 @@ const randomize = (cardTypeFunc) => {
     return randomizedData;
 }
 
-//card holder
-const cardHolderGenerator = (playerCount) => {
-
+//card holder, containing all generated info
+//passing in number of players and array of selected collections
+const cardHolderGenerator = (playerCount, collectionArr) => {
         const heroCardContainer = document.createElement('div')
         heroCardContainer.classList = "hero-card-container"
         heroCardContainer.innerHTML = 
@@ -94,16 +94,21 @@ const cardHolderGenerator = (playerCount) => {
             `
         content.append(heroCardContainer)
 
-        heroCardGenerator(playerCount)
+        heroCardGenerator(playerCount, collectionArr)
         // resetPage()
 
 }
 
 //hero html generator
 //pass in player amount
-const heroCardGenerator = (playerCount) => {
+const heroCardGenerator = (playerCount, collectionArr) => {
     // const heroData = randomizeHeroes();
-    const heroData = randomize(getHeroes())
+    console.log(collectionArr)
+    if (collectionArr.length === 0) {
+        alert("Please select a collection")
+    } else {
+        const heroData = randomize(getHeroes())
+    
     
     let count = playerToNumber(playerCount)
     //parsing through each hero object
@@ -137,6 +142,7 @@ const heroCardGenerator = (playerCount) => {
     henchmenCardGenerator(playerCount);
     heroCardContainer.append(scheme);
     heroCardContainer.append(bystanders);
+}
 }
 
 const createMastermindSection = () => {
@@ -294,16 +300,21 @@ const playerCountToBystanders = (playerCount) => {
 
 
 startButton.addEventListener('click', (e) => {
-    // clickCounter++;
+    // variable for number of players
     let value = playerAmt.options[playerAmt.selectedIndex].text;
+    // variable for selected collections
     let collectionChoices = document.querySelectorAll('input[name="collection"]:checked');
-    console.log(collectionChoices)
+    let collectionValues = [];
+    collectionChoices.forEach((checkbox) => {
+        collectionValues.push(checkbox.value)
+    });
+
     const heroCardContainer = document.querySelector(".hero-card-container")
     if (heroCardContainer) {
         heroCardContainer.remove();
 
     }
-    cardHolderGenerator(value)
+    cardHolderGenerator(value, collectionValues)
     // heroCardGenerator()
 })
 
