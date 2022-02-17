@@ -21,9 +21,9 @@ const getHeroes = () => [
     { name: "Storm", id: 13, set: "core"},
     { name: "Thor", id: 14, set: "core"},
     { name: "Iron Man", id: 15, set: "core"},
-    { name: "Angel", id: 1, set: "dark city"},
-    { name: "Bishop", id: 2, set: "dark city"},
-    { name: "Blade", id: 1, set: "dark city"},
+    { name: "Angel", id: 1, set: "dark-city"},
+    { name: "Bishop", id: 2, set: "dark-city"},
+    { name: "Blade", id: 1, set: "dark-city"},
 
 ]
 
@@ -81,7 +81,16 @@ const randomize = (cardTypeFunc) => {
 
 //run through hero array and select elements that match selected collection
 const pullDataBySelectedCollection = (collectionArr) => {
-
+    const rawHeroData = getHeroes();
+    const groupedHeroesByCollection = [];
+    collectionArr.forEach(collection => {
+        const filteredHero = rawHeroData.filter(heroObj => {
+            return heroObj.set === collection
+        })
+        groupedHeroesByCollection.push(filteredHero)
+    })
+    // rawHeroData.forEach((collectionArr))
+    console.log(groupedHeroesByCollection)
 }
 
 //card holder, containing all generated info
@@ -110,10 +119,10 @@ const heroCardGenerator = (playerCount, collectionArr) => {
         alert("Please select a collection")
     } else {
         console.log(collectionArr)
-        const heroGroup = pullDataBySelectedCollection(collectionArr)
-
+        // const heroGroup = pullDataBySelectedCollection(collectionArr)
+        pullDataBySelectedCollection(collectionArr)
         const heroData = randomize(getHeroes())
-        const heroData = randomize(heroGroup)
+        // const heroData = randomize(heroGroup)
     
     let count = playerToNumber(playerCount)
     //parsing through each hero object
