@@ -81,19 +81,29 @@ const randomize = (cardTypeFunc) => {
 
 //run through hero array and select elements that match selected collection
 const pullDataBySelectedCollection = (collectionArr) => {
+    console.log(collectionArr)
     const rawHeroData = getHeroes();
     let groupedHeroesByCollection = [];
     collectionArr.forEach(collection => {
-        const filteredHero = rawHeroData.filter(heroObj => {
-            return heroObj.set === collection
-        })
+        console.log(collection)
+        // const filteredHero = rawHeroData.filter(heroObj => {
+        //     return heroObj.set === collection
+        // })
         // console.log(filteredHero)
         // groupedHeroesByCollection.push(filteredHero)
-        groupedHeroesByCollection = filteredHero
+        rawHeroData.forEach(heroObj => {
+            if (heroObj.set === collection) {
+                groupedHeroesByCollection.push(heroObj)
+            }
+        })
+        // groupedHeroesByCollection += filteredHero
     })
+
     // rawHeroData.forEach((collectionArr))
-    // console.log(filteredHero)
+
     console.log(groupedHeroesByCollection)
+
+
     return groupedHeroesByCollection
     // return groupedHeroesByCollection
 }
