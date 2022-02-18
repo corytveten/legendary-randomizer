@@ -82,15 +82,20 @@ const randomize = (cardTypeFunc) => {
 //run through hero array and select elements that match selected collection
 const pullDataBySelectedCollection = (collectionArr) => {
     const rawHeroData = getHeroes();
-    const groupedHeroesByCollection = [];
+    let groupedHeroesByCollection = [];
     collectionArr.forEach(collection => {
         const filteredHero = rawHeroData.filter(heroObj => {
             return heroObj.set === collection
         })
-        groupedHeroesByCollection.push(filteredHero)
+        // console.log(filteredHero)
+        // groupedHeroesByCollection.push(filteredHero)
+        groupedHeroesByCollection = filteredHero
     })
     // rawHeroData.forEach((collectionArr))
+    // console.log(filteredHero)
     console.log(groupedHeroesByCollection)
+    return groupedHeroesByCollection
+    // return groupedHeroesByCollection
 }
 
 //card holder, containing all generated info
@@ -119,10 +124,11 @@ const heroCardGenerator = (playerCount, collectionArr) => {
         alert("Please select a collection")
     } else {
         console.log(collectionArr)
-        // const heroGroup = pullDataBySelectedCollection(collectionArr)
-        pullDataBySelectedCollection(collectionArr)
-        const heroData = randomize(getHeroes())
-        // const heroData = randomize(heroGroup)
+        const heroGroup = pullDataBySelectedCollection(collectionArr)
+        // pullDataBySelectedCollection(collectionArr)
+        // const heroData = randomize(getHeroes())
+        const heroData = randomize(heroGroup)
+        console.log(heroData)
     
     let count = playerToNumber(playerCount)
     //parsing through each hero object
