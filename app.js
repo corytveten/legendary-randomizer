@@ -29,14 +29,14 @@ const getHeroes = () => [
     { name: "Elecktra", id: 21, set: "dark-city"},
     { name: "Forge", id: 22, set: "dark-city"},
     { name: "Ghost Rider", id: 23, set: "dark-city"},
-    { name: "Ice Man", id: 24, set: "dark-city"},
+    { name: "Iceman", id: 24, set: "dark-city"},
     { name: "Iron Fist", id: 25, set: "dark-city"},
     { name: "Jean Grey", id: 26, set: "dark-city"},
     { name: "Nightcrawler", id: 27, set: "dark-city"},
     { name: "Professor X", id: 28, set: "dark-city"},
     { name: "Punisher", id: 29, set: "dark-city"},
     { name: "Weapon X Wolverine", id: 30, set: "dark-city"},
-    { name: "Blade", id: 31, set: "dark-city"},
+    { name: "Cable", id: 31, set: "dark-city"},
     { name: "Blade", id: 32, set: "dark-city"},
 
 ]
@@ -46,6 +46,12 @@ const getMasterminds = () => [
     { name: "Dr. Doom", id: 2, set: "core"},
     { name: "Red Skull", id: 3, set: "core"},
     { name: "Loki", id: 4, set: "core"},
+    { name: "Apocalypse", id: 5, set: "dark-city"},
+    { name: "Kingpin", id: 6, set: "dark-city"},
+    { name: "Mephisto", id: 7, set: "dark-city"},
+    { name: "Mr. Sinister", id: 8, set: "dark-city"},
+    { name: "Stryfe", id: 9, set: "dark-city"},
+
 ]
 
 const getVillains = () => [
@@ -56,6 +62,13 @@ const getVillains = () => [
     { name: "Masters of Evil", id: 5, set: "core" },
     { name: "Radiation", id: 6, set: "core" },
     { name: "Skrulls", id: 7, set: "core" },
+    { name: "Emissaries of Evil", id: 8, set: "dark-city" },
+    { name: "Four Horsemen", id: 9, set: "dark-city" },
+    { name: "Marauders", id: 10, set: "dark-city" },
+    { name: "Mutant Liberation Front", id: 11, set: "dark-city" },
+    { name: "Streets of New York", id: 12, set: "dark-city" },
+    { name: "Underworld", id: 13, set: "dark-city" },
+
 ]
 
 const getHenchmen = () => [
@@ -63,6 +76,9 @@ const getHenchmen = () => [
     { name: "Hand Ninjas", id: 2, set: "core"},
     { name: "Savage Land Mutates", id: 3, set: "core"},
     { name: "Sentinel", id: 4, set: "core"},
+    { name: "Maggia Goons", id: 5, set: "dark-city" },
+    { name: "Phalanx", id: 6, set: "dark-city" },
+
 ]
 
 const getScheme = () => [
@@ -71,11 +87,18 @@ const getScheme = () => [
     { name: "Replace Earth's Leaders with Killbots", id: 3, set: "core"},
     { name: "The Legacy Virus", id: 4, set: "core"},
     { name: "Midtown Bank Robbery", id: 5, set: "core"},
-    { name: "Unleash the Power of the Cosmic Cube", id: 6, set: "core"}
+    { name: "Capture Baby Hope", id: 6, set: "dark-city"},
+    { name: "X-Cutioner's Song", id: 7, set: "dark-city"},
+    { name: "Transform Citizens Into Demons", id: 8, set: "dark-city"},
+    { name: "Steal the Weaponized Plutonium", id: 9, set: "dark-city"},
+    { name: "Detonate the Helicarrier", id: 10, set: "dark-city"},
+    { name: "Save Humanity", id: 11, set: "dark-city"},
+    { name: "Massive Earthquake Generator", id: 12, set: "dark-city"},
+    { name: "Organized Crime Wave", id: 13, set: "dark-city"},
 ]
 
-const randomizeMasterminds = () => {
-    const mastermindData = getMasterminds()
+const randomizeMasterminds = (mmGroup) => {
+    const mastermindData = mmGroup;
     mastermindData.sort(() => Math.random() - 0.5);
     return mastermindData[0];
 }
@@ -113,6 +136,28 @@ const pullDataBySelectedCollection = (collectionArr) => {
 
 
     return groupedHeroesByCollection
+    // return groupedHeroesByCollection
+}
+
+const pullMMDataBySelectedCollection = (collectionArr) => {
+    console.log(collectionArr)
+    const rawMMData = getMasterminds();
+    let groupedMMByCollection = [];
+    collectionArr.forEach(collection => {
+        rawMMData.forEach(mmObj => {
+            if (mmObj.set === collection) {
+                groupedMMByCollection.push(mmObj)
+            }
+        })
+        // groupedHeroesByCollection += filteredHero
+    })
+
+    // rawHeroData.forEach((collectionArr))
+
+    console.log(groupedMMByCollection)
+
+
+    return groupedMMByCollection
     // return groupedHeroesByCollection
 }
 
@@ -167,7 +212,7 @@ const heroCardGenerator = (playerCount, collectionArr) => {
     }
     // const heroSection = document.querySelector(".hero-section")
     const heroCardContainer = document.querySelector(".hero-card-container")
-    const masterMind = createMastermindSection()
+    const masterMind = createMastermindSection(collectionArr)
     const villains = createVillainSection(playerCount)
     const henchmen = createHenchmenSection(playerCount);
     const bystanders = createBystandersSection(playerCount)
@@ -183,9 +228,10 @@ const heroCardGenerator = (playerCount, collectionArr) => {
 }
 }
 
-const createMastermindSection = () => {
-    const mastermindData = randomizeMasterminds();
-    // console.log(mastermindData)
+const createMastermindSection = (collectionArr) => {
+    const sortedMastermind = pullMMDataBySelectedCollection(collectionArr);
+    const mastermindData = randomizeMasterminds(sortedMastermind);
+    console.log(mastermindData)
     const mastermindSection = document.createElement('div');
     // mastermindSection.classList = 'card';
     // mastermindSection.setAttribute('name', mastermindData.name)
