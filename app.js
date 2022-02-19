@@ -85,12 +85,6 @@ const pullDataBySelectedCollection = (collectionArr) => {
     const rawHeroData = getHeroes();
     let groupedHeroesByCollection = [];
     collectionArr.forEach(collection => {
-        console.log(collection)
-        // const filteredHero = rawHeroData.filter(heroObj => {
-        //     return heroObj.set === collection
-        // })
-        // console.log(filteredHero)
-        // groupedHeroesByCollection.push(filteredHero)
         rawHeroData.forEach(heroObj => {
             if (heroObj.set === collection) {
                 groupedHeroesByCollection.push(heroObj)
